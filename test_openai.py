@@ -1,7 +1,7 @@
 import os
 
 from dotenv import load_dotenv
-from langchain_openai import init_chat_model
+from langchain.chat_models import init_chat_model
 
 load_dotenv()
 
@@ -11,7 +11,7 @@ if not api_key:
 
 model = init_chat_model(
   model_provider="openai",
-  model="gpt-5.2",
+  model="gpt-4o-mini",
   api_key=api_key
 )
 
