@@ -12,3 +12,6 @@ wheels/
 # Environment variables
 .env
 .env.*
+.idea/
+.pytest_cache/
+.DS_Store
