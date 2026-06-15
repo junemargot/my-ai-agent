@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
+from langchain_core.messages import HumanMessage, SystemMessage
 
 load_dotenv()
 
@@ -14,8 +15,16 @@ model = init_chat_model(
   api_key=api_key
 )
 
-response_stream = model.stream("한국의 계절은?")
+messages = [
+  SystemMessage(content="당신은 사용자의 모든 발화를 영어로 번역합니다."),
+  HumanMessage(content="LangChain의 구조를 설명해주세요.")
+]
 
-for chunk in response_stream:
-  if chunk.text:
-    print(chunk.text, end="", flush=True)
+response = model.invoke(messages)
+print(response.text)
+
+# response_stream = model.stream("한국의 계절은?")
+
+# for chunk in response_stream:
+#   if chunk.text:
+#     print(chunk.text, end="", flush=True)
